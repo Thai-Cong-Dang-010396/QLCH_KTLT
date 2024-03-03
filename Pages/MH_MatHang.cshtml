@@ -1,0 +1,56 @@
+﻿@page
+@using QLCH_KTLT.Entities
+@using QLCH_KTLT.XuLyNghiepVu
+@model QLCH_KTLT.Pages.MH_MatHangModel
+@{
+    MatHang[] danhSach = XL_MatHang.DocDanhSach();
+    if (Request.Method == "POST")
+    {
+        string tukhoa = Request.Form["tukhoa"];
+        danhSach = XL_MatHang.DocDanhSach(tukhoa);
+    }
+}
+<a href="MH_Them_MatHang">Thêm</a>
+<div class="text-center">
+    <form method="post">
+        <label for="tukhoa">Từ Khóa:</label><br>
+        <input type="text" name="tukhoa" value=""><br><br>
+        <input type="submit" value="Tim">
+    </form>
+</div>
+<table>
+    <tr>
+        <th>Mã mặt hàng</th>
+        <th>Tên mặt hàng</th>
+        <th>Hạn dùng</th>
+        <th>Công ty sản xuất</th>
+        <th>Ngày sản xuất</th>
+        <th>Loại Hàng</th>
+        <th>Giá</th>
+        <th></th>
+    </tr>
+    @if (danhSach.Length > 0)
+    {
+        @foreach (MatHang mh in danhSach)
+        {   
+        <tr>
+            <td>@mh.MaMH</td>
+            <td>@mh.Ten</td>
+            <td>@mh.HanDung</td>
+            <td>@mh.CongTySx</td>
+            <td>@mh.CongTySx</td>
+            <td>@mh.LoaiHang</td>
+            <td>@mh.Gia</td>
+            <td>
+                <a href="MH_Sua_MatHang?masp=@mh.MaMH">Sửa</a>
+                <a href="MH_Xoa_MatHang?masp=@mh.MaMH">Xóa</a>
+            </td>
+        </tr>
+        }
+    }
+</table>
+
+@if (danhSach == null)
+{
+    <div>Khong co ket qua</div>
+}

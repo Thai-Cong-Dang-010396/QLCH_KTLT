@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    string fristname = string.Empty;
+    string lastname = string.Empty;
+    if (Request.Method == "POST")
+    {
+    fristname = Request.Form["fristname"];
+    lastname = Request.Form["lastname"];
+    }
+
+}
+
+<div class="text-center">
+    @if (!string.IsNullOrEmpty(fristname))
+    {
+        <p>Chao ban @fristname @lastname</p>
+    }
+    <form method="post">
+        <label for="fristname">First name:</label><br>
+        <input type="text" name="fristname" value=""><br>
+        <label for="lastname">Last name:</label><br>
+        <input type="text" name="lastname" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>

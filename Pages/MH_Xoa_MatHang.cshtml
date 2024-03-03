@@ -1,0 +1,34 @@
+﻿@page
+@using QLCH_KTLT.Entities
+@using QLCH_KTLT.XuLyNghiepVu
+@model QLCH_KTLT.Pages.MH_Xoa_MatHang
+@{
+    string chuoi = string.Empty;
+    string masp = Request.Query["masp"];
+    MatHang? p = null;
+    if (!string.IsNullOrEmpty(masp))
+    {
+        p = XL_MatHang.DocThongTinChiTietSanPham(masp);
+    }
+    if (Request.Method == "POST")
+    {
+        string kq = XL_MatHang.XoaMatHang(p.Value.MaMH);
+        chuoi = kq;
+        if (!string.IsNullOrEmpty(chuoi))
+        {
+            Response.Redirect("MH_MatHang");
+        }
+    }
+}
+<div class="text-center">
+    @if (p != null) {
+        <div>Ban co muon xoa mat hang <div>@p.Value.Ten</div> khong?</div>
+        <form method="post">       
+            <input type="submit" value="Xoa">
+        </form>
+    } 
+    else 
+    {
+        <div>Mat hang khong ton tai</div>
+    }
+</div>

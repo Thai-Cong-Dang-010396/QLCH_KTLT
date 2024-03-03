@@ -1,0 +1,60 @@
+﻿@page
+@using QLCH_KTLT.Entities
+@using QLCH_KTLT.XuLyNghiepVu
+@model QLCH_KTLT.Pages.MH_Sua_MatHang
+@{
+    string chuoi = string.Empty;
+    string masp = Request.Query["masp"];
+    MatHang? p = null;
+    if (!string.IsNullOrEmpty(masp))
+    {
+        p = XL_MatHang.DocThongTinChiTietSanPham(masp);
+    }
+    if (Request.Method == "POST")
+    {
+        string ten = Request.Form["ten"];
+        string handung = Request.Form["handung"];
+        string congTySx = Request.Form["congtysx"];
+        string ngaySx = Request.Form["ngaysx"];
+        string loaiHang = Request.Form["lh"];
+        int gia = int.Parse(Request.Form["gia"]);
+        MatHang mh = p.Value;
+        mh.Ten = ten;
+        mh.HanDung = handung;
+        mh.CongTySx = congTySx;
+        mh.NgaySx = ngaySx;
+        mh.LoaiHang = loaiHang;
+        mh.Gia = gia;
+        string kq = XL_MatHang.SuaMatHang(mh);
+        chuoi = kq;
+        if (!string.IsNullOrEmpty(chuoi))
+        {
+            Response.Redirect("MH_MatHang");
+        }
+    }
+}
+<div class="text-center">
+    @if (p != null) {
+        <form method="post">
+            <label for="abc">Mã mặt hàng:</label><br>
+            <input type="text" name="mamh" value="@p.Value.MaMH"><br>
+            <label for="abc">Tên hàng:</label><br>
+            <input type="text" name="ten" value="@p.Value.Ten"><br>
+            <label for="abc">Hạn dùng:</label><br>
+            <input type="text" name="handung" value="@p.Value.HanDung"><br>
+            <label for="abc">Công ty sản xuất:</label><br>
+            <input type="text" name="congtysx" value="@p.Value.CongTySx"><br>
+            <label for="abc">Ngày sản xuất:</label><br>
+            <input type="text" name="ngaysx" value="@p.Value.NgaySx"><br>
+            <label for="abc">Loại hàng:</label><br>
+            <input type="text" name="lh" value="@p.Value.LoaiHang"><br>
+            <label for="abc">Giá:</label><br>
+            <input type="number" name="gia" value="@p.Value.Gia"><br><br>
+            <input type="submit" value="Sua">
+        </form>
+    } 
+    else 
+    {
+        <div>Mat hang khong ton tai</div>
+    }
+</div>

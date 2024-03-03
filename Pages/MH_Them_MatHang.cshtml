@@ -1,0 +1,43 @@
+﻿@page
+@using QLCH_KTLT.Entities
+@using QLCH_KTLT.XuLyNghiepVu
+@model QLCH_KTLT.Pages.MH_Them_MatHang
+@{
+    string chuoi = string.Empty;
+    if (Request.Method == "POST")
+    {
+        MatHang p;
+        p.MaMH = Request.Form["mamh"];
+        p.Ten = Request.Form["ten"];
+        p.HanDung = Request.Form["handung"];
+        p.CongTySx = Request.Form["congtysx"];
+        p.NgaySx = Request.Form["ngaysx"];
+        p.LoaiHang = Request.Form["lh"];
+        p.Gia = int.Parse(Request.Form["gia"]);
+        string kq = XL_MatHang.ThemMatHang(p);
+        chuoi = kq;
+        if (!string.IsNullOrEmpty(chuoi))
+        {
+            Response.Redirect("MH_MatHang");
+        }
+    }
+}
+<div class="text-center">
+    <form method="post">
+        <label for="abc">Mã mặt hàng:</label><br>
+        <input type="text" name="mamh" value=""><br>
+        <label for="abc">Tên hàng:</label><br>
+        <input type="text" name="ten" value=""><br>
+        <label for="abc">Hạn dùng:</label><br>
+        <input type="text" name="handung" value=""><br>
+        <label for="abc">Công ty sản xuất:</label><br>
+        <input type="text" name="congtysx" value=""><br>
+        <label for="abc">Ngày sản xuất:</label><br>
+        <input type="text" name="ngaysx" value=""><br>
+        <label for="abc">Loại hàng:</label><br>
+        <input type="text" name="lh" value=""><br>
+        <label for="abc">Giá:</label><br>
+        <input type="number" name="gia" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
