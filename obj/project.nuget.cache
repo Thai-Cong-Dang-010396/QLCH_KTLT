@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nng0F6JH4RJvcnkJIjOf/f02FR5ACdMRSEbBJYNsnBR5z9fjk0UHdzAQS7OtX7ijNh5LqFG+l68bDQCyeMPJxw==",
+  "dgSpecHash": "jg1e3DOcl0OjzSiEB2LTNmnRvAI1akuIlRL96bPGhXFGlZ+EEY88liXLsTE4vFzvM+oDnLKyK71JpQIDLP/wQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\23810015_KTLT\\QLCH_KTLT\\QLCH_KTLT.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\GitHub\\QLCH_KTLT\\QLCH_KTLT.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
+  ],
   "logs": []
 }
